@@ -1,0 +1,157 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  BUYER
+  OWNER
+  DEALER
+  ADMIN
+}
+
+enum UserStatus {
+  ACTIVE
+  SUSPENDED
+}
+
+enum ListingPurpose {
+  SALE
+  RENT
+  COMMERCIAL
+}
+
+enum ListingStatus {
+  DRAFT
+  PENDING
+  APPROVED
+  REJECTED
+  SOLD
+  RENTED
+  ARCHIVED
+}
+
+model User {
+  id           String     @id @default(cuid())
+  name         String
+  email        String     @unique
+  phone        String
+  passwordHash String
+  role         Role
+  status       UserStatus @default(ACTIVE)
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  sessions     Session[]
+  properties   Property[]
+  favorites    Favorite[]
+  audits       AuditLog[]
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  tokenHash String   @unique
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+}
+
+model Location {
+  id           String     @id @default(cuid())
+  slug         String     @unique
+  name         String
+  district     String
+  districtSlug String
+  province     String     @default("Punjab")
+  active       Boolean    @default(true)
+  properties   Property[]
+
+  @@index([districtSlug])
+}
+
+model Property {
+  id              String          @id @default(cuid())
+  slug            String          @unique
+  title           String
+  description     String
+  purpose         ListingPurpose
+  category        String
+  pricePkr        Int
+  negotiable      Boolean         @default(false)
+  locationId      String
+  location        Location        @relation(fields: [locationId], references: [id])
+  areaName        String?
+  societyName     String?
+  sizeValue       Float
+  sizeUnit        String
+  bedrooms        Int?
+  bathrooms       Int?
+  coveredArea     Float?
+  amenities       String          @default("[]")
+  latitude        Float?
+  longitude       Float?
+  contactPhone    String
+  whatsappPhone   String?
+  showPhone       Boolean         @default(true)
+  showWhatsapp    Boolean         @default(false)
+  status          ListingStatus   @default(DRAFT)
+  rejectReason    String?
+  featuredUntil   DateTime?
+  ownerId         String
+  owner           User            @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  images          PropertyImage[]
+  favorites       Favorite[]
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+  submittedAt     DateTime?
+  publishedAt     DateTime?
+
+  @@index([status, publishedAt])
+  @@index([locationId, status])
+  @@index([ownerId])
+}
+
+model PropertyImage {
+  id         String   @id @default(cuid())
+  propertyId String
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  fileName   String
+  mimeType   String
+  sortOrder  Int      @default(0)
+  createdAt  DateTime @default(now())
+}
+
+model Favorite {
+  id         String   @id @default(cuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  propertyId String
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  createdAt  DateTime @default(now())
+
+  @@unique([userId, propertyId])
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  actorId   String?
+  actor     User?    @relation(fields: [actorId], references: [id], onDelete: SetNull)
+  action    String
+  entity    String
+  entityId  String
+  detail    String?
+  createdAt DateTime @default(now())
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  message   String
+  createdAt DateTime @default(now())
+}
