@@ -26,11 +26,11 @@ export function PropertySearchForm({
       action="/properties"
       method="get"
       className={cn(
-        "rounded-xl border border-white/20 bg-white p-4 shadow-lg sm:p-5",
-        compact && "shadow-sm",
+        "rounded-[1.6rem] border border-white/25 bg-white/95 p-5 shadow-2xl shadow-brand/20 backdrop-blur sm:p-6",
+        compact && "border-brand/10 shadow-md",
       )}
     >
-      <fieldset className="mb-4 grid grid-cols-3 gap-1 rounded-lg bg-cream p-1">
+      <fieldset className="mb-4 grid grid-cols-3 gap-1 rounded-full bg-cream p-1">
         <legend className="sr-only">Listing purpose</legend>
         {listingPurposes.map((item) => (
           <label
@@ -44,7 +44,7 @@ export function PropertySearchForm({
               defaultChecked={purpose === item.value}
               className="peer sr-only"
             />
-            <span className="w-full rounded-md px-2 py-2 text-center text-sm font-semibold text-ink-muted peer-checked:bg-brand peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-gold">
+            <span className="w-full rounded-full px-2 py-2 text-center text-sm font-semibold text-ink-muted transition-colors peer-checked:bg-brand peer-checked:text-gold peer-focus-visible:ring-2 peer-focus-visible:ring-gold">
               {item.label}
             </span>
           </label>

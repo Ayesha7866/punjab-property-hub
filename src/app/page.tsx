@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import { Benefits } from "@/components/home/benefits";
+import { CityTicker } from "@/components/home/city-ticker";
 import { FeaturedAndRecent } from "@/components/home/featured-and-recent";
 import { HomeHero } from "@/components/home/hero";
 import { HowItWorks } from "@/components/home/how-it-works";
@@ -9,18 +10,31 @@ import { Container } from "@/components/ui/container";
 import { brand } from "@/config/brand";
 
 export default function Home() {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: brand.name,
-    description: brand.description,
-    url: brand.url,
-    areaServed: {
-      "@type": "AdministrativeArea",
-      name: "Punjab, Pakistan",
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: brand.name,
+      description: brand.description,
+      url: brand.url,
+      areaServed: {
+        "@type": "AdministrativeArea",
+        name: "Punjab, Pakistan",
+      },
+      email: brand.contact.email,
     },
-    email: brand.contact.email,
-  };
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: brand.name,
+      url: brand.url,
+      potentialAction: {
+        "@type": "SearchAction",
+        target: `${brand.url}/properties?q={search_term_string}`,
+        "query-input": "required name=search_term_string",
+      },
+    },
+  ];
 
   return (
     <>
@@ -29,8 +43,9 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <HomeHero />
+      <CityTicker />
       <PopularCities />
-      <section className="py-16">
+      <section className="py-20">
         <Container>
           <Suspense fallback={<p className="text-sm text-ink-muted">Loading listings…</p>}>
             <FeaturedAndRecent />

@@ -23,7 +23,7 @@ export function Field({
 }
 
 export const fieldControlClass =
-  "h-11 w-full rounded-md border border-brand/15 bg-white px-3 text-sm text-ink outline-none transition-colors placeholder:text-ink-muted/70 focus:border-gold focus:ring-2 focus:ring-gold/30";
+  "h-11 w-full rounded-2xl border border-brand/12 bg-white px-3.5 text-sm text-ink outline-none transition-all placeholder:text-ink-muted/70 focus:border-gold focus:ring-4 focus:ring-gold/20";
 
 export function Select({
   name,

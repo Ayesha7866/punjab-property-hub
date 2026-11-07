@@ -2,18 +2,13 @@
 
 This file is for putting **Punjab Property Hub** on GitHub, then creating a **Hostinger Node.js web app**. Do not point **papergenerator.online** at this app.
 
-The marketplace folder in this project is `punjab-property-hub`.
+GitHub repository: [https://github.com/Ayesha7866/punjab-property-hub](https://github.com/Ayesha7866/punjab-property-hub)
+
+When that repo holds this app at the **root** (`package.json` on the first page), Hostinger **Root directory** is empty `/` and the branch is **`main`**.
 
 ## Part 1 — GitHub
 
-### If GitHub is already connected to the papermaker repo
-
-You may already have this repository on GitHub from PAPerGenerator. In that case you do **not** create a second copy. In Hostinger, import that same repo and set:
-
-- Branch: `cursor/pph-qa-bugfixes-120e`
-- Root directory: `punjab-property-hub`
-
-`main` is still PAPerGenerator. Do not deploy `main` as this marketplace.
+This marketplace is a **separate** GitHub repo. It is not papergenerator.online.
 
 ### If you need a new GitHub repository
 
@@ -48,8 +43,8 @@ You need a **Business** plan (you already have this). Use **Node.js web app**, n
 
 | Field | Value |
 |---|---|
-| Branch | `cursor/pph-qa-bugfixes-120e` |
-| Root directory | `punjab-property-hub` if the repo is papermaker; leave empty `/` if the repo is only this app |
+| Branch | `main` |
+| Root directory | empty (this GitHub repo is the app itself) |
 | Node.js | `22` |
 | Application type | `next` |
 | Build script | `build` |

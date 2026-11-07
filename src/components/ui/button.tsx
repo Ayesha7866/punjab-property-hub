@@ -3,19 +3,19 @@ import { cn } from "@/lib/cn";
 
 const variants = {
   primary:
-    "bg-brand text-white hover:bg-brand-deep focus-visible:outline-brand",
-  gold: "bg-gold text-brand-deep hover:bg-gold-deep focus-visible:outline-gold",
+    "bg-brand text-white shadow-lg shadow-brand/20 hover:bg-brand-mid hover:-translate-y-0.5",
+  gold: "bg-gold text-brand-deep shadow-lg shadow-gold/30 hover:bg-saffron hover:-translate-y-0.5",
   outline:
-    "border border-brand/20 bg-white text-brand hover:border-brand/40 hover:bg-cream",
+    "border border-brand/15 bg-white/80 text-brand backdrop-blur hover:border-gold hover:bg-cream",
   onDark:
-    "border border-white bg-white text-brand-deep hover:bg-gold hover:border-gold",
+    "border border-white/70 bg-white text-brand-deep hover:bg-gold hover:border-gold",
   ghost: "text-brand hover:bg-brand/5",
 };
 
 const sizes = {
-  sm: "h-9 px-3 text-sm",
-  md: "h-11 px-4 text-sm",
-  lg: "h-12 px-5 text-base",
+  sm: "h-9 px-4 text-sm",
+  md: "h-11 px-5 text-sm",
+  lg: "h-12 px-6 text-base",
 };
 
 type Common = {
@@ -37,7 +37,7 @@ export function Button({
     <button
       type={type}
       className={cn(
-        "inline-flex items-center justify-center gap-2 rounded-md font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-60",
+        "inline-flex items-center justify-center gap-2 rounded-full font-semibold tracking-tight transition-all duration-300 disabled:cursor-not-allowed disabled:opacity-60",
         variants[variant],
         sizes[size],
         className,
@@ -60,7 +60,7 @@ export function ButtonLink({
     <Link
       href={href}
       className={cn(
-        "inline-flex items-center justify-center gap-2 rounded-md font-medium transition-colors",
+        "inline-flex items-center justify-center gap-2 rounded-full font-semibold tracking-tight transition-all duration-300",
         variants[variant],
         sizes[size],
         className,

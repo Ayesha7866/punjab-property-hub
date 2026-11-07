@@ -67,7 +67,7 @@ export function CitiesDirectory() {
                 <li key={place.slug}>
                   <Link
                     href={`/properties?city=${place.slug}&district=${place.districtSlug}`}
-                    className="block rounded-lg border border-brand/10 bg-white px-4 py-3 text-sm shadow-sm hover:border-gold"
+                    className="card-lift block rounded-2xl border border-brand/10 bg-surface px-4 py-3 text-sm shadow-sm hover:border-gold"
                   >
                     <span className="font-semibold text-brand">{place.name}</span>
                     <span className="mt-1 block text-ink-muted">

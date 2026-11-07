@@ -1,16 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f7f4ee;
-  --foreground: #1c1915;
-  --brand: #0b1f3a;
-  --brand-deep: #071526;
-  --gold: #c4a35a;
-  --gold-deep: #9b7b32;
-  --cream: #f7f4ee;
-  --ink: #1c1915;
-  --ink-muted: #5c574e;
-  --surface: #ffffff;
+  --background: #f3eee4;
+  --foreground: #12100c;
+  --brand: #07111f;
+  --brand-deep: #040910;
+  --brand-mid: #16345a;
+  --gold: #e4b23c;
+  --gold-deep: #c48914;
+  --saffron: #f0b429;
+  --terracotta: #d45c28;
+  --cream: #f7f1e6;
+  --ink: #12100c;
+  --ink-muted: #5d564a;
+  --surface: #fffcf7;
 }
 
 @theme inline {
@@ -18,14 +21,21 @@
   --color-foreground: var(--foreground);
   --color-brand: var(--brand);
   --color-brand-deep: var(--brand-deep);
+  --color-brand-mid: var(--brand-mid);
   --color-gold: var(--gold);
   --color-gold-deep: var(--gold-deep);
+  --color-saffron: var(--saffron);
+  --color-terracotta: var(--terracotta);
   --color-cream: var(--cream);
   --color-ink: var(--ink);
   --color-ink-muted: var(--ink-muted);
   --color-surface: var(--surface);
-  --font-sans: var(--font-source);
-  --font-serif: var(--font-baskerville);
+  --font-sans: var(--font-outfit);
+  --font-serif: var(--font-fraunces);
+  --animate-marquee: marquee 42s linear infinite;
+  --animate-marquee-reverse: marquee-reverse 48s linear infinite;
+  --animate-float: float 8s ease-in-out infinite;
+  --animate-pulse-soft: pulse-soft 5s ease-in-out infinite;
 }
 
 html,
@@ -42,10 +52,111 @@ h1,
 h2,
 h3,
 .font-serif {
-  font-family: var(--font-serif), "Palatino Linotype", serif;
+  font-family: var(--font-serif), Georgia, serif;
+  font-optical-sizing: auto;
 }
 
 :focus-visible {
   outline: 2px solid var(--gold);
-  outline-offset: 2px;
+  outline-offset: 3px;
+}
+
+::selection {
+  background: #e4b23c;
+  color: #07111f;
+}
+
+.grain {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  opacity: 0.18;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='.55'/></svg>");
+}
+
+.orb {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(40px);
+  animation: float 10s ease-in-out infinite;
+}
+
+.reveal {
+  animation: rise 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-reverse {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(4%, -8%, 0) scale(1.08);
+  }
+}
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+.card-lift {
+  transition:
+    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.45s ease;
+}
+
+.card-lift:hover {
+  transform: translateY(-8px) rotate(-0.4deg);
+  box-shadow: 0 28px 50px -28px rgba(7, 17, 31, 0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .orb,
+  .animate-marquee,
+  .animate-marquee-reverse,
+  .animate-float,
+  .animate-pulse-soft,
+  .card-lift,
+  .card-lift:hover {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
 }

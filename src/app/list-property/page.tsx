@@ -37,7 +37,7 @@ export default async function ListPropertyPage() {
             <div className="grid gap-3 sm:grid-cols-2">
               <a
                 href="/register?role=owner"
-                className="rounded-xl border border-gold bg-cream p-5 shadow-sm"
+                className="card-lift rounded-[1.6rem] border border-gold bg-cream p-5 shadow-sm"
               >
                 <p className="font-serif text-xl text-brand">I own the property</p>
                 <p className="mt-2 text-sm text-ink-muted">
@@ -46,7 +46,7 @@ export default async function ListPropertyPage() {
               </a>
               <a
                 href="/register?role=dealer"
-                className="rounded-xl border border-brand/15 bg-white p-5 shadow-sm"
+                className="card-lift rounded-[1.6rem] border border-brand/15 bg-surface p-5 shadow-sm"
               >
                 <p className="font-serif text-xl text-brand">I am a dealer / agent</p>
                 <p className="mt-2 text-sm text-ink-muted">
@@ -67,7 +67,7 @@ export default async function ListPropertyPage() {
             <form action={becomeSellerAction}>
               <button
                 type="submit"
-                className="rounded-md bg-gold px-4 py-3 text-sm font-semibold text-brand-deep"
+                className="rounded-full bg-gold px-4 py-3 text-sm font-semibold text-brand-deep"
               >
                 Make this a seller account and open the form
               </button>

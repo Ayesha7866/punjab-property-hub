@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { ListingMedia } from "@/components/properties/listing-media";
 import { Container } from "@/components/ui/container";
+import { brand } from "@/config/brand";
 import { parseAmenities } from "@/lib/amenities";
 import { categoryLabel, formatPkr } from "@/lib/format";
 import { getPublishedBySlug } from "@/lib/listings";
@@ -36,8 +37,33 @@ export default async function PropertyDetailPage({ params }: Props) {
     ? whatsappLink(waNumber, `Assalamu alaikum, I saw ${property.title} on Punjab Property Hub. Is it still available?`)
     : null;
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "RealEstateListing",
+    name: property.title,
+    description: property.description,
+    url: `${brand.url}/properties/${property.slug}`,
+    datePosted: (property.publishedAt ?? property.createdAt).toISOString(),
+    offers: {
+      "@type": "Offer",
+      price: property.pricePkr,
+      priceCurrency: "PKR",
+      availability: "https://schema.org/InStock",
+    },
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: property.location.name,
+      addressRegion: property.location.district,
+      addressCountry: "PK",
+    },
+  };
+
   return (
     <Container className="space-y-8 py-10">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Breadcrumbs
         items={[
           { href: "/", label: "Home" },
@@ -63,7 +89,7 @@ export default async function PropertyDetailPage({ params }: Props) {
             </ul>
           ) : null}
         </div>
-        <aside className="h-fit rounded-xl border border-brand/10 bg-white p-6 shadow-sm">
+        <aside className="h-fit rounded-[1.6rem] border border-brand/10 bg-surface p-6 shadow-lg lg:sticky lg:top-24">
           <p className="text-xs font-semibold uppercase tracking-wide text-gold-deep">
             {property.purpose === "RENT" ? "For rent" : property.purpose === "COMMERCIAL" ? "Commercial" : "For sale"}
           </p>
@@ -87,7 +113,7 @@ export default async function PropertyDetailPage({ params }: Props) {
             </p>
             {publicPhone ? (
               <a
-                className="block rounded-md bg-brand px-4 py-3 text-center text-sm font-semibold text-white"
+                className="block rounded-full bg-brand px-4 py-3 text-center text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
                 href={`tel:${publicPhone}`}
               >
                 Call seller {publicPhone}
@@ -95,7 +121,7 @@ export default async function PropertyDetailPage({ params }: Props) {
             ) : null}
             {wa ? (
               <a
-                className="block rounded-md bg-[#128C7E] px-4 py-3 text-center text-sm font-semibold text-white"
+                className="block rounded-full bg-[#128C7E] px-4 py-3 text-center text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
                 href={wa}
                 rel="noopener noreferrer"
                 target="_blank"
@@ -105,7 +131,7 @@ export default async function PropertyDetailPage({ params }: Props) {
             ) : null}
             {publicPhone ? (
               <a
-                className="block rounded-md border border-brand/20 px-4 py-3 text-center text-sm text-brand"
+                className="block rounded-full border border-brand/20 px-4 py-3 text-center text-sm font-semibold text-brand hover:border-gold"
                 href={`sms:${publicPhone}`}
               >
                 Send SMS

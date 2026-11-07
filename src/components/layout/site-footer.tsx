@@ -36,22 +36,20 @@ const columns = [
 
 export function SiteFooter() {
   return (
-    <footer className="mt-auto border-t border-brand/10 bg-brand text-white">
-      <Container className="grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
+    <footer className="mt-auto bg-brand-deep text-white">
+      <Container className="grid gap-10 py-16 sm:grid-cols-2 lg:grid-cols-4">
         <div>
-          <Logo className="text-white [&_span:last-child_span:last-child]:text-gold" />
-          <p className="mt-4 max-w-xs text-sm leading-6 text-white/75">{brand.description}</p>
+          <Logo invert />
+          <p className="mt-5 max-w-xs text-sm leading-6 text-white/70">{brand.description}</p>
           <p className="mt-4 text-sm text-gold">{brand.contact.email}</p>
         </div>
         {columns.map((column) => (
           <div key={column.title}>
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gold">
-              {column.title}
-            </p>
-            <ul className="mt-4 space-y-2">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">{column.title}</p>
+            <ul className="mt-4 space-y-2.5">
               {column.links.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="text-sm text-white/80 hover:text-white">
+                <li key={`${column.title}-${link.href}`}>
+                  <Link href={link.href} className="text-sm text-white/75 transition-colors hover:text-gold">
                     {link.label}
                   </Link>
                 </li>
@@ -61,11 +59,9 @@ export function SiteFooter() {
         ))}
       </Container>
       <div className="border-t border-white/10">
-        <Container className="flex flex-col gap-2 py-5 text-xs text-white/60 sm:flex-row sm:items-center sm:justify-between">
-          <p>
-            © 2026 {brand.legalName}. Listings appear only after review.
-          </p>
-          <p>Punjab, Pakistan. Listings are reviewed before they go public.</p>
+        <Container className="flex flex-col gap-2 py-5 text-xs text-white/50 sm:flex-row sm:items-center sm:justify-between">
+          <p>© 2026 {brand.legalName}. Listings appear only after review.</p>
+          <p>Punjab, Pakistan · reviewed listings only</p>
         </Container>
       </div>
     </footer>

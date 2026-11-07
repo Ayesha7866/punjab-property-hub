@@ -8,7 +8,7 @@ export function ListingMedia({
   title: string;
 }) {
   if (items.length === 0) {
-    return <div className="relative h-72 overflow-hidden rounded-xl bg-cream" />;
+    return <div className="relative h-72 overflow-hidden rounded-[1.6rem] bg-cream" />;
   }
   return (
     <div className="grid gap-3">
@@ -16,7 +16,7 @@ export function ListingMedia({
         isVideoMime(item.mimeType) ? (
           <video
             key={item.id}
-            className="h-72 w-full rounded-xl bg-black object-contain"
+            className="h-72 w-full rounded-[1.6rem] bg-black object-contain"
             controls
             playsInline
             preload="metadata"
@@ -30,7 +30,7 @@ export function ListingMedia({
             key={item.id}
             src={`/api/media/${item.id}`}
             alt={title}
-            className="h-72 w-full rounded-xl object-cover"
+            className="h-72 w-full rounded-[1.6rem] object-cover"
           />
         ),
       )}

@@ -43,8 +43,8 @@ function DesktopNav() {
           key={item.href}
           href={item.href}
           className={cn(
-            "text-sm font-medium text-ink-muted transition-colors hover:text-brand",
-            isNavActive(item.href, pathname, purpose) && "text-brand",
+            "relative text-sm font-medium text-ink-muted transition-colors hover:text-brand after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:rounded-full after:bg-gold after:transition-all after:duration-300 hover:after:w-full",
+            isNavActive(item.href, pathname, purpose) && "text-brand after:w-full",
           )}
         >
           {item.label}
@@ -59,8 +59,8 @@ export function SiteHeader({ user }: { user: HeaderUser }) {
   const dashboardHref = user?.role === "ADMIN" ? "/admin" : "/dashboard";
 
   return (
-    <header className="sticky top-0 z-40 border-b border-brand/10 bg-white/95 backdrop-blur">
-      <Container className="flex h-16 items-center justify-between gap-4">
+    <header className="sticky top-0 z-40 border-b border-brand/10 bg-cream/80 backdrop-blur-xl">
+      <Container className="flex h-[4.25rem] items-center justify-between gap-4">
         <Link href="/" className="shrink-0" onClick={() => setOpen(false)}>
           <Logo />
         </Link>
