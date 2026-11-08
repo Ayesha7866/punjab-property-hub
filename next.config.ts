@@ -19,6 +19,9 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: path.join(__dirname),
   },
+  outputFileTracingIncludes: {
+    "/*": ["./prisma/**/*"],
+  },
   async headers() {
     return [
       {
