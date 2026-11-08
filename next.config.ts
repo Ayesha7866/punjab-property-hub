@@ -13,14 +13,11 @@ const nextConfig: NextConfig = {
       allowedOrigins: ["*.trycloudflare.com"],
     },
   },
+  // Keep turbopack.root so a parent papermaker postcss config cannot leak in.
+  // Do not add CSS loader rules: Hostinger's Next build turned `globals.css` into
+  // `globals.css.css` and crashed Turbopack.
   turbopack: {
     root: path.join(__dirname),
-    rules: {
-      "*.css": {
-        loaders: ["@tailwindcss/turbopack"],
-        as: "*.css",
-      },
-    },
   },
   async headers() {
     return [
