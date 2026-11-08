@@ -3,11 +3,12 @@ import { Suspense } from "react";
 import Link from "next/link";
 import { PageIntro } from "@/components/layout/page-intro";
 import { Container } from "@/components/ui/container";
+import { brand } from "@/config/brand";
 import { RegisterForm } from "./register-form";
 
 export const metadata: Metadata = {
   title: "Create account",
-  description: "Register as a buyer, property owner, or dealer on Punjab Property Hub.",
+  description: `Register as a buyer, property owner, or dealer on ${brand.name}.`,
   alternates: { canonical: "/register" },
 };
 

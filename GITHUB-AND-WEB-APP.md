@@ -1,6 +1,6 @@
 # GitHub + Hostinger web app (no coding)
 
-This file is for putting **Punjab Property Hub** on GitHub, then creating a **Hostinger Node.js web app**. Do not point **papergenerator.online** at this app.
+This file is for putting **EstateHubb** (estatehubb.online) on GitHub, then creating a **Hostinger Node.js web app**. Do not point **papergenerator.online** at this app.
 
 GitHub repository: [https://github.com/Ayesha7866/punjab-property-hub](https://github.com/Ayesha7866/punjab-property-hub)
 
@@ -64,16 +64,16 @@ In **File Manager**, in your home folder (name like `u123456789`), create:
 
 ```
 NODE_ENV=production
-NEXT_PUBLIC_APP_URL=https://YOUR-DOMAIN
+NEXT_PUBLIC_APP_URL=https://estatehubb.online
 DATABASE_URL=file:/home/YOUR_USER/pph-data/pph.db
 UPLOAD_DIR=/home/YOUR_USER/pph-data/uploads
-ADMIN_BOOTSTRAP_EMAIL=you@yourdomain.com
+ADMIN_BOOTSTRAP_EMAIL=you@estatehubb.online
 ADMIN_BOOTSTRAP_PASSWORD=use-a-long-unique-password
 ADMIN_BOOTSTRAP_NAME=Site Administrator
 ```
 
 Save, then **Deploy**. Wait until **Deployments** is green. Open the preview URL.
 
-Success = homepage **Punjab Property Hub**, not PAPerGenerator.
+Success = homepage **EstateHubb**, not PAPerGenerator.
 
-Then attach your domain to **this new website**, not papergenerator.online.
+Then attach **estatehubb.online** to **this new website**, not papergenerator.online.

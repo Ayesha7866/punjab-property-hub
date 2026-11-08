@@ -34,7 +34,7 @@ export default async function PropertyDetailPage({ params }: Props) {
     ? property.whatsappPhone || property.contactPhone
     : publicPhone;
   const wa = waNumber
-    ? whatsappLink(waNumber, `Assalamu alaikum, I saw ${property.title} on Punjab Property Hub. Is it still available?`)
+    ? whatsappLink(waNumber, `Assalamu alaikum, I saw ${property.title} on ${brand.name}. Is it still available?`)
     : null;
 
   const jsonLd = {

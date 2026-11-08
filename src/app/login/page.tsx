@@ -4,12 +4,13 @@ import { redirect } from "next/navigation";
 import { PageIntro } from "@/components/layout/page-intro";
 import { Container } from "@/components/ui/container";
 import { safeNextPath } from "@/lib/safe-path";
+import { brand } from "@/config/brand";
 import { getSessionUser } from "@/lib/session";
 import { LoginForm } from "./login-form";
 
 export const metadata: Metadata = {
   title: "Sign in",
-  description: "Sign in to Punjab Property Hub.",
+  description: `Sign in to ${brand.name}.`,
   alternates: { canonical: "/login" },
 };
 

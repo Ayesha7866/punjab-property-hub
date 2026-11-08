@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { HowItWorks } from "@/components/home/how-it-works";
 import { PageIntro } from "@/components/layout/page-intro";
+import { brand } from "@/config/brand";
 
 export const metadata: Metadata = {
   title: "How it works",
-  description: "How buyers, owners, and dealers will use Punjab Property Hub.",
+  description: `How buyers, owners, and dealers will use ${brand.name}.`,
   alternates: { canonical: "/how-it-works" },
 };
 

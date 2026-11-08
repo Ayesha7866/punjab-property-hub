@@ -22,9 +22,9 @@ export default function AboutPage() {
       />
       <Container className="max-w-3xl space-y-5 py-12 text-base leading-7 text-ink-muted">
         <p>
-          {brand.name} is being built as a production marketplace for property in
-          Punjab, Pakistan. Owners, dealers, and authorised agents will publish
-          homes, plots, and commercial space. Buyers and tenants will search,
+          {brand.name} ({brand.domain}) is a production marketplace for property in
+          Punjab, Pakistan. Owners, dealers, and authorised agents publish
+          homes, plots, and commercial space. Buyers and tenants search,
           save, and contact sellers.
         </p>
         <p>

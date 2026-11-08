@@ -33,7 +33,7 @@ export function Logo({
             invert ? "text-gold" : "text-gold-deep",
           )}
         >
-          Punjab, Pakistan
+          {brand.domain}
         </span>
       </span>
     </span>

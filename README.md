@@ -1,6 +1,6 @@
-# Punjab Property Hub
+# EstateHubb
 
-Property marketplace for **Punjab, Pakistan**. Temporary brand name, colours, and contact details live in `src/config/brand.ts`.
+Property marketplace for **Punjab, Pakistan**, live name **EstateHubb** at **estatehubb.online**. Brand, colours, and contact details live in `src/config/brand.ts`.
 
 This application is a **separate Next.js app** inside the existing `papermaker` repository so PAPerGenerator.online is not overwritten.
 

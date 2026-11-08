@@ -6,6 +6,7 @@ import { Container } from "@/components/ui/container";
 import { EmptyState } from "@/components/ui/empty-state";
 import { PropertyCard } from "@/components/properties/property-card";
 import { describeFilters, parseSearchFilters, type SearchFilters } from "@/lib/search";
+import { brand } from "@/config/brand";
 import { searchPublished } from "@/lib/listings";
 
 type Props = {
@@ -17,7 +18,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
   const summary = describeFilters(filters);
   return {
     title: `Search ${summary}`,
-    description: `Search results ${summary} on Punjab Property Hub. Only approved listings will appear.`,
+    description: `Search results ${summary} on ${brand.name}. Only approved listings will appear.`,
     alternates: { canonical: "/properties" },
   };
 }

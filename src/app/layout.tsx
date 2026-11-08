@@ -27,6 +27,8 @@ export const metadata: Metadata = {
   },
   description: brand.description,
   keywords: [
+    "EstateHubb",
+    "estatehubb.online",
     "Punjab property",
     "Pakistan real estate",
     "houses for sale Punjab",

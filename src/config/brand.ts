@@ -3,19 +3,20 @@
  * without hunting through templates.
  */
 export const brand = {
-  name: "Punjab Property Hub",
-  shortName: "PPH",
-  legalName: "Punjab Property Hub",
+  name: "EstateHubb",
+  shortName: "EstateHubb",
+  legalName: "EstateHubb",
+  domain: "estatehubb.online",
   tagline: "Buy, rent, and list property across Punjab — with honest listings.",
   description:
-    "Punjab Property Hub is a property marketplace for Punjab, Pakistan. Owners, dealers, and agents can publish homes, plots, and commercial space. Buyers and tenants can search by city, district, society, price, and size.",
+    "EstateHubb (estatehubb.online) is a property marketplace for Punjab, Pakistan. Owners, dealers, and agents can publish homes, plots, and commercial space. Buyers and tenants can search by city, district, society, price, and size.",
   locale: "en-PK",
   currency: "PKR",
   province: "Punjab",
   country: "Pakistan",
-  url: process.env.NEXT_PUBLIC_APP_URL ?? "http://127.0.0.1:45218",
+  url: process.env.NEXT_PUBLIC_APP_URL ?? "https://estatehubb.online",
   contact: {
-    email: "hello@punjabpropertyhub.example",
+    email: "hello@estatehubb.online",
     phoneDisplay: "+92 300 0000000",
     phoneE164: "+923000000000",
     whatsappE164: "923000000000",

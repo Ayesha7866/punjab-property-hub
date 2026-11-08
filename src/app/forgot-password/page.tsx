@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageIntro } from "@/components/layout/page-intro";
 import { Container } from "@/components/ui/container";
+import { brand } from "@/config/brand";
 
 export const metadata: Metadata = {
   title: "Forgot password",
-  description: "Password reset help for Punjab Property Hub.",
+  description: `Password reset help for ${brand.name}.`,
   alternates: { canonical: "/forgot-password" },
 };
 

@@ -1,5 +1,6 @@
 import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
+import { brand } from "@/config/brand";
 
 export function ListCta() {
   return (
@@ -12,7 +13,7 @@ export function ListCta() {
           <div className="relative">
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gold">List with us</p>
             <h2 className="mt-4 max-w-xl font-serif text-4xl leading-tight sm:text-5xl">
-              Your house, plot, or shop — on a Punjab-first marketplace.
+              Your house, plot, or shop — on {brand.name}.
             </h2>
             <p className="mt-5 max-w-xl text-base leading-7 text-white/75">
               Register as an owner or dealer, add photos and an optional video, then submit
